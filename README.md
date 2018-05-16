@@ -1,2 +1,2 @@
 # MG-PHP-CURL
-Mailgun PHP API with cURL
+Mailgun API via PHP cURL
