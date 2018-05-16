@@ -5,9 +5,9 @@
   return preg_replace('#<br\s*/?-->#i', "\n", $string);
 }
 
-define('MAILGUN_API',"yourApiKey");
-define('DOMAIN',"yourDomain.org");
-define('FROMADDR', "support@".DOMAIN);
+define('MAILGUN_API',"yourApiKey"); //put your mailgun api key here
+define('DOMAIN',"yourDomain.org"); //put a domain registered at mailgun here, or the sandbox subdomain
+define('FROMADDR', "support@".DOMAIN); // support@yourdomain.org or adjust for your needs
 
 function shootEmail($Receiver, $Title, $HTMLMessage) {
 
@@ -19,7 +19,7 @@ function shootEmail($Receiver, $Title, $HTMLMessage) {
   // If you are not using SSL set this to 0 or false
   curl_setopt($mgcurl, CURLOPT_SSL_VERIFYPEER, 0);
 
-  $PlainText = strip_tags(breakToNewLine($HMTLMessage));
+  $PlainText = strip_tags(breakToNewLine($HTMLMessage));
 
   curl_setopt($mgcurl, CURLOPT_CUSTOMREQUEST, 'POST');
   curl_setopt($mgcurl, CURLOPT_URL, 'https://api.mailgun.net/v3/'.DOMAIN.'/messages');
